@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Link from "next/link";
 
-export default function Home() {
+export default function Compromise() {
   return (
     <>
       <Head>
@@ -12,9 +11,7 @@ export default function Home() {
       </Head>
       <main>
         <h1 className="text-4xl font-bold text-center">Yelp for Couples</h1>
-        <Link href={"/compromise"}>
-          <button className="rounded bg-slate-500 hover:bg-slate-400">COMPROMISE</button>
-        </Link>
+        <p>Compromise Page</p>
       </main>
     </>
   );
