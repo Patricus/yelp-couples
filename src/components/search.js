@@ -44,7 +44,7 @@ function search({ setHasSearched, setList1, setList2 }) {
     <section className="flex flex-col items-center gap-8">
       <div>
         <label htmlFor="location">Location</label>
-        <input
+        <input className="bg-transparent border  border-cyan-500 rounded-md ml-4"
           type="text"
           id="location"
           name="location"
@@ -52,7 +52,7 @@ function search({ setHasSearched, setList1, setList2 }) {
           onChange={e => setLocation(e.target.value)}
         />
       </div>
-      <div className="flex justify-around">
+      <div className="flex justify-around bg-gray-200 p-4 rounded-md shadow-md gap-20">
         <div>
           <p>Errors1: {errors1 && errors1.description}</p>
           <SearchForm search={search1} setSearch={setSearch1} price={price1} setPrice={setPrice1} />
@@ -62,7 +62,7 @@ function search({ setHasSearched, setList1, setList2 }) {
           <SearchForm search={search2} setSearch={setSearch2} price={price2} setPrice={setPrice2} />
         </div>
       </div>
-      <button onClick={handleSearch}>Yelp Search</button>
+      <button className="bg-red-500 px-3 py-1 rounded-lg uppercase font-bold" onClick={handleSearch}>Yelp Search</button>
     </section>
   );
 }
