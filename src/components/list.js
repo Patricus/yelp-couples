@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 function list({ reset, list1, list2 }) {
-  console.log("list1", list1);
   const lst2 = list2.filter(item => !list1.find(i => i.id === item.id));
   const list = (() => {
     const combinedList = [];
