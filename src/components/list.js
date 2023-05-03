@@ -1,15 +1,17 @@
 import Image from "next/image";
 
 function list({ reset, list1, list2 }) {
+  console.log("list1", list1);
+  const lst2 = list2.filter(item => !list1.find(i => i.id === item.id));
   const list = (() => {
     const combinedList = [];
     let idx = 0;
-    while (list1.length > idx && list2.length > idx) {
+    while (list1.length > idx && lst2.length > idx) {
       combinedList.push(list1[idx]);
-      combinedList.push(list2[idx]);
+      combinedList.push(lst2[idx]);
       idx++;
     }
-    return [...combinedList, ...list1.slice(idx), ...list2.slice(idx)];
+    return [...combinedList, ...list1.slice(idx), ...lst2.slice(idx)];
   })();
 
   return (

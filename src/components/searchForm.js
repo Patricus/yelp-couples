@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function searchForm({ search, setSearch, price, setPrice }) {
   return (
     <form className="mt-1">
