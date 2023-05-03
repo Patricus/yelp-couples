@@ -5,13 +5,16 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Yelp for Couples</title>
-        <meta name="description" content="Yelp for Couples" />
+        <title>DuoDine</title>
+        <meta name="description" content="DuoDine" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1 className="text-4xl font-bold text-center bg-orange-200 py-2 uppercase">Yelp for Couples</h1>
+        <h1 className="text-4xl font-bold text-center bg-orange-200 py-2 uppercase">
+          <span className="font-bold text-cyan-500">D</span>uo
+          <span className="font-bold text-cyan-500">D</span>ine
+        </h1>
         <Link href={"/compromise"}>
           <button className="rounded bg-slate-500 hover:bg-slate-400 m-4">COMPROMISE</button>
         </Link>
