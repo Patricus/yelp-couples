@@ -31,7 +31,7 @@ function list({ reset, list1, list2 }) {
                 ))}
               </div>
               <div className="flex justify-between">
-                <p>Phone: {item.display_phone || "None"}</p>
+                <p>Phone: {item.display_phone || "N/A"}</p>
                 <p>Price: {item.price || "???"}</p>
               </div>
               <div className="flex justify-between">
@@ -43,7 +43,11 @@ function list({ reset, list1, list2 }) {
             </div>
           ))}
       </div>
-      <button onClick={reset}>New Search</button>
+      <button
+        className="transition:color absolute top-3 left-3 font-mono font-extrabold border-2 rounded-full w-6 h-6 text-slate-500 hover:text-white hover:bg-slate-600"
+        onClick={reset}>
+        <div className="relative bottom-2 left-1 -rotate-90 text-3xl">{"^"}</div>
+      </button>
     </section>
   );
 }
