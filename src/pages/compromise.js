@@ -23,7 +23,7 @@ export default function Compromise() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col items-center">
-        <h1 className="text-4xl  text-center bg-fuchsia-300 py-2 uppercase mb-10 w-screen">
+        <h1 className="text-4xl  text-center bg-fuchsia-300 py-2 uppercase mb-10 w-full">
           <span className="font-bold text-cyan-500">D</span>uo
           <span className="font-bold text-cyan-500">D</span>ine
         </h1>

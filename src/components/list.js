@@ -14,22 +14,31 @@ function list({ reset, list1, list2 }) {
 
   return (
     <section>
-      <div className="flex flex-col gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {list.length > 0 &&
           list.map((item, i) => (
-            <div key={i}>
-              <h2>{item.name}</h2>
-              <Image src={item.image_url} alt={item.name} width={200} height={200} />
-              <div>
-                <p>Address:</p>
+            <div className="border border-cyan-200 rounded-md p-1 flex flex-col" key={i}>
+              <h2 className="font-semibold">{item.name}</h2>
+              <div className="relative w-full h-[200px] bg-slate-400 rounded overflow-hidden">
+                <Image src={item.image_url} alt={item.name} fill />
+              </div>
+              <div className="flex-grow">
                 {item.location.display_address.map((line, i) => (
-                  <p key={i}>{line}</p>
+                  <p className="underline" key={i}>
+                    {line}
+                  </p>
                 ))}
               </div>
-              <p>Phone: {item.display_phone}</p>
-              <p>Price: {item.price}</p>
-              <p>Rating: {item.rating}</p>
-              <a href={item.url}>Find on Yelp</a>
+              <div className="flex justify-between">
+                <p>Phone: {item.display_phone || "None"}</p>
+                <p>Price: {item.price || "???"}</p>
+              </div>
+              <div className="flex justify-between">
+                <a className="text-blue-600 underline" href={item.url}>
+                  Find on Yelp
+                </a>
+                <p>Rating: {item.rating}</p>
+              </div>
             </div>
           ))}
       </div>
