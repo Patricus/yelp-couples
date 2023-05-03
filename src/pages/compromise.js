@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 import Search from "../components/search";
 import List from "../components/list";
 
