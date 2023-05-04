@@ -2,6 +2,8 @@ import { useState } from "react";
 import SearchForm from "./searchForm";
 
 function search({ setHasSearched, setList1, setList2 }) {
+  const [isSearching, setIsSearching] = useState(false);
+
   const [errors1, setErrors1] = useState(null);
   const [errors2, setErrors2] = useState(null);
 
@@ -14,9 +16,38 @@ function search({ setHasSearched, setList1, setList2 }) {
   const [price2, setPrice2] = useState("");
 
   const handleSearch = async () => {
-    // reset state
+    // Reset state
+    setHasSearched(false);
     setList1([]);
     setList2([]);
+
+    // Handle input errors
+    let err1 = null;
+    let err2 = null;
+
+    if (price2 === "") {
+      err2 = { description: "Please select a price range." };
+    }
+    if (price1 === "") {
+      err1 = { description: "Please select a price range." };
+    }
+    if (!search2) {
+      err2 = { description: "Please enter a search term." };
+    }
+    if (!search1) {
+      err1 = { description: "Please enter a search term." };
+    }
+    if (!location) {
+      err1 = { description: "Please enter a location." };
+      err2 = { description: "Please enter a location." };
+    }
+
+    setErrors1(err1);
+    setErrors2(err2);
+    if (err1 || err2) return;
+
+    // Start search
+    setIsSearching(true);
 
     const fetch1 = fetch(`/api/yelp?search=${search1}&price=${price1}&location=${location}`);
     const fetch2 = fetch(`/api/yelp?search=${search2}&price=${price2}&location=${location}`);
@@ -29,6 +60,7 @@ function search({ setHasSearched, setList1, setList2 }) {
     // Await both requests in parallel
     const data = await Promise.all([data1, data2]);
 
+    // Fetch errors
     for (const i in data) {
       const d = data[i];
       i == 0 ? setErrors1(d.error || null) : setErrors2(d.error || null);
@@ -39,12 +71,17 @@ function search({ setHasSearched, setList1, setList2 }) {
       setList2(data[1].businesses);
       setHasSearched(true);
     }
+
+    // End search
+    setIsSearching(false);
   };
+
   return (
-    <section className="flex flex-col items-center gap-8">
+    <section className="flex flex-col items-center bg-gray-200 p-4 rounded-md shadow-md gap-8 w-11/12 md:w-3/4 max-w-5xl">
       <div>
         <label htmlFor="location">Location</label>
-        <input className="bg-transparent border  border-cyan-500 rounded-md ml-4"
+        <input
+          className="bg-transparent border  border-cyan-500 rounded-md ml-4"
           type="text"
           id="location"
           name="location"
@@ -52,17 +89,32 @@ function search({ setHasSearched, setList1, setList2 }) {
           onChange={e => setLocation(e.target.value)}
         />
       </div>
-      <div className="flex justify-around bg-gray-200 p-4 rounded-md shadow-md gap-20">
-        <div>
-          <p>Errors1: {errors1 && errors1.description}</p>
+      <div className="flex flex-col sm:flex-row justify-around gap-20">
+        <div className="relative">
+          {errors1 && (
+            <div className="absolute -top-5 text-red-800 font-semibold">{errors1.description}</div>
+          )}
           <SearchForm search={search1} setSearch={setSearch1} price={price1} setPrice={setPrice1} />
         </div>
-        <div>
-          <p>Errors2: {errors2 && errors2.description}</p>
+        <div className="relative">
+          {errors2 && (
+            <div className="absolute -top-5 text-red-800 font-semibold">{errors2.description}</div>
+          )}
           <SearchForm search={search2} setSearch={setSearch2} price={price2} setPrice={setPrice2} />
         </div>
       </div>
-      <button className="bg-red-500 px-3 py-1 rounded-lg uppercase font-bold" onClick={handleSearch}>Yelp Search</button>
+      <button
+        className={`bg-red-400 w-28 h-10 px-3 rounded-lg uppercase font-bold flex justify-center items-center ${
+          isSearching && "cursor-not-allowed"
+        }`}
+        disabled={isSearching}
+        onClick={handleSearch}>
+        {isSearching ? (
+          <div className="w-5 h-5 border-4 border-blue-400 border-t-teal-100 rounded-full animate-spin"></div>
+        ) : (
+          "Search"
+        )}
+      </button>
     </section>
   );
 }
