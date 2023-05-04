@@ -8,7 +8,7 @@ export default function Home() {
         <title>DuoDine</title>
         <meta name="description" content="DuoDine" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/android-chrome-512x512.png" />
       </Head>
       <main className="flex flex-col items-center mb-2">
         <h1 className="text-4xl font-bold text-center bg-orange-200 py-2 uppercase w-screen mb-10">
