@@ -4,7 +4,27 @@ This app takes two restaurant genres, ratings, and price ranges and returns a li
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+This project uses [Yelp Fusion](https://fusion.yelp.com/) API. You will need to create a Yelp account and get your API key.
+
+Create a `.env.local` file in the root directory and add the following:
+
+```env
+YELP_API_KEY=<your api key>
+```
+
+### Installing
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+### Running
+
+Run the development server:
 
 ```bash
 npm run dev
