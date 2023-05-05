@@ -18,7 +18,9 @@ function list({ reset, list1, list2 }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {list.length > 0 &&
           list.map((item, i) => (
-            <div className="border border-cyan-200 rounded-md p-1 flex flex-col" key={i}>
+            <div
+              className="border-2 border-cyan-200 bg-slate-100 rounded-md p-1 flex flex-col"
+              key={i}>
               <h2 className="font-semibold">{item.name}</h2>
               <div className="relative w-full h-[200px] bg-slate-400 rounded overflow-hidden">
                 <Image src={item.image_url} alt={item.name} fill />
