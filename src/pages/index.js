@@ -16,7 +16,7 @@ export default function Home() {
           <span className="font-bold text-cyan-500">D</span>ine
         </h1>
         <section className=" w-11/12 max-w-5xl grid grid-cols-2 ">
-          <div className="border-2 border-sky-200 rounded-md text-lg py-3 px-5">
+          <div className="border-2 border-sky-200 rounded-md text-lg py-3 px-5 bg-cyan-200">
             <p>
               <span className="font-semibold">I</span>
               t&apos;s a Friday evening. You&apos;ve had a long week and you just want to go out and
@@ -32,11 +32,14 @@ export default function Home() {
               suggestions and gives you a mixed list of the two.
             </p>
           </div>
-          <Link href={"/compromise"} className="place-self-center">
-            <button className="rounded-md bg-slate-500 hover:bg-slate-400 p-4 font-bold text-slate-900">
-              COMPROMISE
-            </button>
-          </Link>
+          <div className="flex flex-col justify-center items-center shadow-lg px-8 py-5 rounded-md">
+            <img src="/Images/dining-couple.png" alt="Couple dining" className="rounded-lg shadow-lg mb-4" />
+            <Link href={"/compromise"}>
+              <button className="rounded-md bg-slate-500 hover:bg-slate-400 p-4 font-bold text-slate-900">
+                COMPROMISE
+              </button>
+            </Link>
+          </div>
         </section>
       </main>
     </>
